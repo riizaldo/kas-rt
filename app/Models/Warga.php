@@ -20,3 +20,5 @@ class Warga extends Model
         return $this->belongsTo(RT::class);
     }
 }
+
+//ts
