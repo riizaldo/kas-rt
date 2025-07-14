@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\RT;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RTSeeder extends Seeder
 {
@@ -12,6 +13,9 @@ class RTSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        RT::insert([
+            ['name' => 'RT 01', 'keterangan' => 'Blok A'],
+            ['name' => 'RT 02', 'keterangan' => 'Blok B'],
+        ]);
     }
 }

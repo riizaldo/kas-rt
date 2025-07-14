@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Iuran;
+use App\Models\KategoriIuran;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class IuranSeeder extends Seeder
 {
@@ -12,6 +14,14 @@ class IuranSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $kategori = KategoriIuran::first();
+
+        Iuran::create([
+            'kategori_iuran_id' => $kategori->id,
+            'name' => 'Iuran Keamanan Juli 2025',
+            'jumlah' => 10000,
+            'tanggal_mulai' => now()->startOfMonth(),
+            'tanggal_selesai' => now()->endOfMonth(),
+        ]);
     }
 }

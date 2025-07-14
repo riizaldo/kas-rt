@@ -2,16 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RTResource\Pages;
-use App\Filament\Resources\RTResource\RelationManagers;
 use App\Models\RT;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\RTResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\RTResource\RelationManagers;
 
 class RTResource extends Resource
 {
@@ -23,7 +26,13 @@ class RTResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nama_rt')
+                    ->label('Nama RT')
+                    ->required()
+                    ->maxLength(10),
+
+                Textarea::make('keterangan')
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +40,8 @@ class RTResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('RT')->searchable(),
+                TextColumn::make('keterangan')->limit(30),
             ])
             ->filters([
                 //

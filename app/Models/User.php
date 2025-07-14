@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Warga;
+use App\Models\Pembayaran;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,5 +51,9 @@ class User extends Authenticatable
     public function warga()
     {
         return $this->hasOne(Warga::class);
+    }
+    public function pembayarans()
+    {
+        return $this->hasMany(Pembayaran::class);
     }
 }

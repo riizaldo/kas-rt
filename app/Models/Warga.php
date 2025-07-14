@@ -9,6 +9,23 @@ use Illuminate\Database\Eloquent\Model;
 class Warga extends Model
 {
 
+    protected $table = 'wargas';
+    protected $fillable = [
+        'user_id',
+        'rt_id',
+        'nik',
+        'no_kk',
+        'nama_lengkap',
+        'blok',
+        'no_rumah',
+        'no_hp',
+        'jenis_kelamin',
+        'tanggal_lahir',
+        'alamat',
+        'pekerjaan',
+        'status_perkawinan',
+        'is_aktif',
+    ];
 
     public function user()
     {
@@ -17,7 +34,7 @@ class Warga extends Model
 
     public function rt()
     {
-        return $this->belongsTo(RT::class);
+        return $this->belongsTo(RT::class, 'rt_id', 'id');
     }
 }
 
