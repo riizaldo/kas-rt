@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::findOrCreate('admin');
+        Role::findOrCreate('super_admin');
         Role::findOrCreate('bendahara');
         Role::findOrCreate('warga');
 
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@desa.local',
             'password' => bcrypt('password'),
         ]);
-        $admin->assignRole('admin');
+        $admin->assignRole('super_admin');
 
         $bendahara = User::create([
             'name' => 'Bendahara',

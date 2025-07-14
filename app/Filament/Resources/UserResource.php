@@ -35,10 +35,12 @@ class UserResource extends Resource
                     ->dehydrated(fn($state) => filled($state))
                     ->dehydrateStateUsing(fn($state) => bcrypt($state)),
 
-                Select::make('roles')
-                    ->multiple()
+                Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
-                    ->preload(),
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
+
             ]);
     }
 
