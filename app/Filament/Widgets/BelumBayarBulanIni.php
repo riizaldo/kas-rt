@@ -39,25 +39,26 @@ class BelumBayarBulanIni extends Widget
 
         $belumBayar = collect();
 
-        foreach ($iuranBulanan as $iuran) {
-            $wargaBelumBayar = Warga::with(['user', 'rt'])
-                ->whereHas('user', function ($query) use ($iuran) {
-                    $query->whereDoesntHave('pembayarans', function ($q) use ($iuran) {
-                        $q->where('iuran_id', $iuran->id)
-                            ->whereMonth('tanggal_bayar', $this->bulan)
-                            ->whereYear('tanggal_bayar', $this->tahun);
-                    });
-                })
-                ->get();
+        $wargas = Warga::with(['user.pembayarans', 'rt'])->get();
 
-            foreach ($wargaBelumBayar as $warga) {
-                $belumBayar->push([
-                    'nama' => $warga->nama_lengkap,
-                    'rt' => optional($warga->rt)->nama ?? '-',
-                    'kategori_iuran' => $iuran->name,
-                    'jumlah' => $iuran->jumlah,
-                    'status' => 'Belum Bayar',
-                ]);
+        foreach ($iuranBulanan as $iuran) {
+            foreach ($wargas as $warga) {
+                // Cek apakah warga belum membayar iuran ini di bulan & tahun sekarang
+                $sudahBayar = $warga->user?->pembayarans()
+                    ->where('iuran_id', $iuran->id)
+                    ->whereMonth('tanggal_bayar', $this->bulan)
+                    ->whereYear('tanggal_bayar', $this->tahun)
+                    ->exists();
+
+                if (! $sudahBayar) {
+                    $belumBayar->push([
+                        'nama' => $warga->nama_lengkap,
+                        'blok' => $warga->blok ?? '-',
+                        'kategori_iuran' => $iuran->name,
+                        'jumlah' => $iuran->jumlah, // ini default target jumlah, bukan yang dibayar
+                        'status' => 'Belum Bayar',
+                    ]);
+                }
             }
         }
 

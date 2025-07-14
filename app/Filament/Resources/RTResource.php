@@ -20,8 +20,21 @@ class RTResource extends Resource
 {
     protected static ?string $model = RT::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    public static function getNavigationLabel(): string
+    {
+        return 'RT'; // Ganti dari 'RT' ke 'Blok'
+    }
 
+    public static function getModelLabel(): string
+    {
+        return 'RT';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'RT';
+    }
     public static function form(Form $form): Form
     {
         return $form

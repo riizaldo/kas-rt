@@ -11,7 +11,7 @@
                 <thead>
                     <tr class="border-b text-left">
                         <th>Nama</th>
-                        <th>RT</th>
+                        <th>blok</th>
                         <th>Iuran</th>
                         <th>Jumlah</th>
                         <th>Status</th>
@@ -21,7 +21,7 @@
                     @forelse($data as $item)
                     <tr class="border-b">
                         <td>{{ $item['nama'] }}</td>
-                        <td>{{ $item['rt'] }}</td>
+                        <td>{{ $item['blok'] }}</td>
                         <td>{{ $item['kategori_iuran'] }}</td>
                         <td>Rp {{ number_format($item['jumlah'], 0, ',', '.') }}</td>
                         <td class="text-red-600 font-semibold">{{ $item['status'] }}</td>

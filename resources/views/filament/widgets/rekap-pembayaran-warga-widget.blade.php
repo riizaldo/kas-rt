@@ -7,7 +7,7 @@
                 <thead>
                     <tr class="bg-black-100">
                         <th class="px-2 py-1 border">Nama</th>
-                        <th class="px-2 py-1 border">RT</th>
+                        <th class="px-2 py-1 border">Blok</th>
                         @foreach ($iuranNames as $iuran)
                         <th class="px-2 py-1 border">{{ $iuran }}</th>
                         @endforeach
@@ -18,7 +18,7 @@
                     @foreach ($wargas as $warga)
                     <tr>
                         <td class="px-2 py-1 border">{{ $warga['nama'] }}</td>
-                        <td class="px-2 py-1 border">{{ $warga['rt'] }}</td>
+                        <td class="px-2 py-1 border">{{ $warga['blok'] }}</td>
                         @foreach ($iuranNames as $iuran)
                         <td class="px-2 py-1 border text-center">{{ $warga['status'][$iuran] ?? '❌' }}</td>
                         @endforeach

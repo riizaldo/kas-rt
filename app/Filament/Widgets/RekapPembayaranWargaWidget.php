@@ -37,23 +37,21 @@ class RekapPembayaranWargaWidget extends Widget
         foreach ($wargas as $warga) {
             $baris = [
                 'nama' => $warga->nama_lengkap,
-                'rt' => optional($warga->rt)->nama ?? '-',
+                'blok' => $warga->blok ?? '-',
                 'status' => [],
                 'total' => 0,
             ];
 
             foreach ($iurans as $iuran) {
-                $sudahBayar = $warga->user?->pembayarans()
+                $jumlahBayar = $warga->user?->pembayarans()
                     ->where('iuran_id', $iuran->id)
                     ->whereMonth('tanggal_bayar', $bulan)
                     ->whereYear('tanggal_bayar', $tahun)
-                    ->exists();
+                    ->sum('jumlah_bayar');
 
-                $baris['status'][$iuran->name] = $sudahBayar ? 'v' : 'x';
+                $baris['status'][$iuran->name] = $jumlahBayar > 0 ? 'v' : 'x';
 
-                if ($sudahBayar) {
-                    $baris['total'] += $iuran->jumlah;
-                }
+                $baris['total'] += $jumlahBayar;
             }
 
             $rekap[] = $baris;

@@ -29,7 +29,7 @@ class Dashboard extends Page
         return [
             // StatistikPembayaranRT::class,
             GrafikPembayaranBulanan::class,
-            BelumBayarBulanIni::class,
+            // BelumBayarBulanIni::class,
         ];
     }
 }
