@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
 use App\Models\Warga;
 use App\Models\Pembayaran;
 use Spatie\Permission\Traits\HasRoles;
@@ -55,5 +56,10 @@ class User extends Authenticatable
     public function pembayarans()
     {
         return $this->hasMany(Pembayaran::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@kas-dai.zonadev.my.id') && $this->hasVerifiedEmail();
     }
 }
