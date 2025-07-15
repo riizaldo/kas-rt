@@ -19,7 +19,7 @@ class Dashboard extends Page
     {
         return [
             StatOverview::class,
-            RekapPembayaranWargaWidget::class,
+            GrafikPembayaranBulanan::class,
         ];
     }
 
@@ -28,7 +28,8 @@ class Dashboard extends Page
     {
         return [
 
-            GrafikPembayaranBulanan::class,
+
+            RekapPembayaranWargaWidget::class,
         ];
     }
 }

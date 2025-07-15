@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             RTSeeder::class,
             UserSeeder::class,
             WargaSeeder::class,
+            // Warga2seeder::class,
             KategoriIuranSeeder::class,
             IuranSeeder::class,
             PembayaranSeeder::class,

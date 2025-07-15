@@ -27,6 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
+
         </div>
     </x-filament::card>
 </x-filament::widget>
