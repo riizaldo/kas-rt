@@ -43,7 +43,7 @@ class WargaResource extends Resource
 
                 Select::make('rt_id')
                     ->label('RT')
-                    ->relationship('rt', 'nama_rt')
+                    ->relationship('rt', 'name')
                     ->searchable()
                     ->required(),
 
