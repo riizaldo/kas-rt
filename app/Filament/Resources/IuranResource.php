@@ -24,7 +24,8 @@ class IuranResource extends Resource
     protected static ?string $model = Iuran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationLabel = 'Iuran';
 
     public static function getEloquentQuery(): Builder
     {

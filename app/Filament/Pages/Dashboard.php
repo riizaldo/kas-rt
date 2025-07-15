@@ -27,9 +27,8 @@ class Dashboard extends Page
     protected function getFooterWidgets(): array
     {
         return [
-            // StatistikPembayaranRT::class,
+
             GrafikPembayaranBulanan::class,
-            // BelumBayarBulanIni::class,
         ];
     }
 }

@@ -25,7 +25,8 @@ class WargaResource extends Resource
     protected static ?string $model = Warga::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Data Penduduk';
+    protected static ?string $navigationLabel = 'Warga';
     public static function form(Form $form): Form
     {
         return $form

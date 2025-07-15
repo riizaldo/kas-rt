@@ -21,6 +21,8 @@ class RTResource extends Resource
     protected static ?string $model = RT::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $navigationGroup = 'Data Penduduk';
+    protected static ?string $navigationLabel = 'RT';
     public static function getNavigationLabel(): string
     {
         return 'RT'; // Ganti dari 'RT' ke 'Blok'

@@ -27,6 +27,8 @@ class PembayaranResource extends Resource
     protected static ?string $model = Pembayaran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Transaksi';
+    protected static ?string $navigationLabel = 'Pemasukan';
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

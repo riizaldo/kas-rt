@@ -22,7 +22,8 @@ class KategoriIuranResource extends Resource
     protected static ?string $model = KategoriIuran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationLabel = 'kategori Iuran';
     public static function form(Form $form): Form
     {
         return $form
