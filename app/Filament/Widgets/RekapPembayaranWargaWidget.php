@@ -24,9 +24,7 @@ class RekapPembayaranWargaWidget extends Widget
 
         // Ambil semua iuran bulanan
         $iurans = Iuran::whereHas(
-            'kategoriIuran',
-            fn($q) =>
-            $q->where('frekuensi', 'bulanan')
+            'kategoriIuran'
         )->get();
 
         // Ambil semua warga dengan user dan rt
